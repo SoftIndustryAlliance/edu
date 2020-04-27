@@ -9,11 +9,6 @@ class LinkedList implements LinkedListInterface
     private $first = null;
     private $last = null;
 
-    public function __construct($key, $value)
-    {
-        $this->init($key, $value);
-    }
-
     /**
      * Inserts or updates a node.
      * @param  $key
@@ -107,6 +102,41 @@ class LinkedList implements LinkedListInterface
     }
 
     /**
+     * Get first node.
+     *
+     * @param $key
+     */
+    public function first()
+    {
+        return $this->first;
+    }
+
+    /**
+     * Prints out a list for debug purposes.
+     *
+     * @return bool
+     */
+    public function printOut()
+    {
+        $current = new LinkedListNode(null, null); // fake first node
+        $current->setNext($this->first);
+        $index = 1;
+
+        do {
+            $current = $current->getNext();
+            if ($current === null) {
+                echo "- list empty";
+                return true;
+            }
+            echo $index . '. - key: ' . $current->getKey() . PHP_EOL;
+            echo '     value: ' . $current->getValue() . PHP_EOL;
+            $index++;
+        } while ($current->getNext() !== null);
+
+        return true;
+    }
+
+    /**
      * Creates first element when empty list.
      *
      * @param  $key
@@ -133,6 +163,9 @@ class LinkedList implements LinkedListInterface
 
         do {
             $current = $current->getNext();
+            if ($current === null) {
+                break;
+            }
             if ($current->getKey() === $key) {
                 return $current;
             }
