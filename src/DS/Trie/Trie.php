@@ -27,9 +27,8 @@ class Trie implements TrieInterface
             }
             $node = $node->getChild($key[$i]);
         }
-        $node->getValue();
+        return $node->getValue();
     }
-
 
     public function insert(string $key, $value)
     {
