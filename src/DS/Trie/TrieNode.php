@@ -15,6 +15,16 @@ class TrieNode
     }
 
     /**
+     * Get children.
+     *
+     * @return array
+     */
+    public function getChildren(): array
+    {
+        return $this->children;
+    }
+
+    /**
      * Get the value of a child by char.
      *
      * @return mixed

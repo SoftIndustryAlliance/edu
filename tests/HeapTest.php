@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use DS\Heap\MinHeap;
 use Faker;
 
-final class LinkedListTest extends TestCase
+final class HeapTest extends TestCase
 {
     protected $faker;
     protected $heap;
