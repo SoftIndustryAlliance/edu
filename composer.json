@@ -9,5 +9,8 @@
     },
     "require": {
         "fzaninotto/faker": "^1.9"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit tests"
     }
 }
