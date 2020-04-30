@@ -1,4 +1,13 @@
 {
+    "name": "dukem1/edu",
+    "type": "project",
+    "description": "Self-educatonal PHP project.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anton Liakh"
+        }
+    ],
     "autoload": {
         "classmap": [
             "src/"
