@@ -90,4 +90,16 @@ final class BinarySearchTreeTest extends TestCase
         $this->assertTrue($bst->remove(40));
         $this->assertNull($bst->find(40));
     }
+
+    public function testBreadthFirstSearch()
+    {
+        $bst = new Node(50, $this->faker->word);
+        $bst->insert(30, $this->faker->word);
+        $bst->insert(20, $this->faker->word);
+        $bst->insert(40, 'test');
+        $bst->insert(70, $this->faker->word);
+        $bst->insert(60, $this->faker->word);
+        $bst->insert(80, $this->faker->word);
+        $this->assertEquals('test', $bst->breadthFirstSearch(40));
+    }
 }

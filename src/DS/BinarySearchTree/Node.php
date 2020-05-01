@@ -3,6 +3,7 @@
 namespace DS\BinarySearchTree;
 
 use DS\BinarySearchTree\BinarySearchTreeInterface;
+use \SplQueue;
 
 class Node implements BinarySearchTreeInterface
 {
@@ -239,5 +240,30 @@ class Node implements BinarySearchTreeInterface
         $this->value = $value;
 
         return $this;
+    }
+
+    /**
+     * BreadthFirstSearch
+     *
+     * @param  string $key
+     * @return mixed
+     */
+    public function breadthFirstSearch($key)
+    {
+        $queue = new SplQueue();
+
+        $queue->enqueue($this);
+        while (!$queue->isEmpty()) {
+            $node = $queue->dequeue();
+            if ($node->getKey() === $key) {
+                return $node->getValue();
+            }
+            if ($node->getLeft()) {
+                $queue->enqueue($node->getLeft());
+            }
+            if ($node->getRight()) {
+                $queue->enqueue($node->getRight());
+            }
+        }
     }
 }
