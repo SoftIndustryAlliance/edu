@@ -10,3 +10,4 @@ Implemented so far:
 - MinHeap
 - LinkedList
 - Trie
+- BinarySearchTree (TODO: needs rewrite)
