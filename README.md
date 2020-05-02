@@ -11,3 +11,9 @@ Implemented so far:
 - LinkedList
 - Trie
 - BinarySearchTree (TODO: needs rewrite)
+- Queue
+- Stack
+
+## Algorithms
+Implemented so far:
+- Breadth-first search
