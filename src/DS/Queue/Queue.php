@@ -31,7 +31,7 @@ class Queue implements QueueInterface
             return;
         }
         $newNode = new Node($data);
-        $newNode->setNext($this->tail);
+        $this->tail->setNext($newNode);
         $this->tail = $newNode;
     }
 
@@ -42,6 +42,9 @@ class Queue implements QueueInterface
         }
         $data = $this->head->getData();
         $this->head = $this->head->getNext();
+        if ($this->head === null) {
+            $this->tail = null;
+        }
         return $data;
     }
 }

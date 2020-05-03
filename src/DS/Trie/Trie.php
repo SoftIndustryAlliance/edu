@@ -3,7 +3,7 @@
 namespace DS\Trie;
 
 use DS\Trie\TrieNode;
-use \SplQueue;
+use DS\Queue\Queue;
 
 class Trie implements TrieInterface
 {
@@ -51,7 +51,7 @@ class Trie implements TrieInterface
      */
     public function findDeepestNodeValue(string $key)
     {
-        $queue = new SplQueue();
+        $queue = new Queue();
         $deepestNodeValue = null;
 
         //find last node for given prefix
@@ -86,7 +86,7 @@ class Trie implements TrieInterface
      */
     public function findSuggestions(string $key): array
     {
-        $queue = new SplQueue();
+        $queue = new Queue();
         $suggestions = array();
 
         //find last node for given prefix

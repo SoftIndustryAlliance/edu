@@ -3,7 +3,7 @@
 namespace DS\BinarySearchTree;
 
 use DS\BinarySearchTree\BinarySearchTreeInterface;
-use \SplQueue;
+use DS\Queue\Queue;
 
 class Node implements BinarySearchTreeInterface
 {
@@ -250,7 +250,7 @@ class Node implements BinarySearchTreeInterface
      */
     public function breadthFirstSearch($key)
     {
-        $queue = new SplQueue();
+        $queue = new Queue();
 
         $queue->enqueue($this);
         while (!$queue->isEmpty()) {

@@ -21,12 +21,16 @@ final class QueueTest extends TestCase
     {
         $this->queue->enqueue('test');
         $this->queue->enqueue($this->faker->name);
+        $this->queue->enqueue($this->faker->name);
+        $this->queue->enqueue($this->faker->name);
         $this->assertEquals('test', $this->queue->dequeue());
     }
 
     public function testQueuePeek()
     {
         $this->queue->enqueue('test');
+        $this->queue->enqueue($this->faker->name);
+        $this->queue->enqueue($this->faker->name);
         $this->queue->enqueue($this->faker->name);
         $this->assertEquals('test', $this->queue->peek());
     }
