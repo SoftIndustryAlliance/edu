@@ -8,9 +8,11 @@ PHP self-educational project for data structures and algorithms.
 Implemented so far:
 - HashTable (TODO: proper scaling process)
 - MinHeap
-- LinkedList
+- Linked List
+- Circular Linked List
+- Doubly Linked List
 - Trie
-- BinarySearchTree (TODO: needs rewrite)
+- Binary Search Tree (TODO: needs rewrite)
 - Queue
 - Stack
 
