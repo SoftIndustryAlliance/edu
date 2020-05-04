@@ -3,23 +3,23 @@
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
-use DS\LinkedList\LinkedList;
+use DS\LinkedList\CircularLinkedList;
 use Faker;
 
-final class LinkedListTest extends TestCase
+final class CircularLinkedListTest extends TestCase
 {
     protected $faker;
 
     protected function setUp(): void
     {
         $this->faker = Faker\Factory::create();
-        $this->linkedList = new LinkedList();
+        $this->linkedList = new CircularLinkedList();
     }
 
     public function testLinkedListCreate()
     {
         $this->linkedList->insert($this->faker->name, $this->faker->sentence);
-        $this->assertInstanceOf(LinkedList::class, $this->linkedList);
+        $this->assertInstanceOf(CircularLinkedList::class, $this->linkedList);
         $this->assertEquals(1, $this->linkedList->count());
     }
 

@@ -4,10 +4,9 @@ namespace DS\LinkedList;
 
 use DS\LinkedList\LinkedListNode;
 
-class LinkedList implements LinkedListInterface
+class CircularLinkedList implements LinkedListInterface
 {
-    private $first = null;
-    private $last = null;
+    private $head = null;
 
     /**
      * Inserts or updates a node.
@@ -17,7 +16,7 @@ class LinkedList implements LinkedListInterface
      */
     public function insert($key, $value): LinkedListNode
     {
-        if (is_null($this->first)) {
+        if (is_null($this->head)) {
             return $this->init($key, $value);
         }
 
@@ -29,9 +28,49 @@ class LinkedList implements LinkedListInterface
         }
 
         // Insert new last.
-        $this->last->setNext(new LinkedListNode($key, $value));
-        $this->last = $this->last->getNext();
-        return $this->last;
+        $newNode = new LinkedListNode($key, $value);
+        $newNode->setNext($this->head->getNext());
+        $this->head->setNext($newNode);
+        return $newNode;
+    }
+
+    /**
+     * Creates first element when empty list.
+     *
+     * @param  $key
+     * @param  $value
+     * @return bool
+     */
+    private function init($key, $value)
+    {
+        $this->head = new LinkedListNode($key, $value);
+        $this->head->setNext($this->head);
+        return $this->head;
+    }
+
+    /**
+    * Find and return a node with a given key.
+    *
+    * @param $key a node's key.
+    * @return LinkedListNode|null
+    */
+    private function find($key): ?LinkedListNode
+    {
+        if ($this->head === null) {
+            return null;
+        }
+
+        $current = new LinkedListNode(null, null); // fake first node
+        $current->setNext($this->head);
+
+        do {
+            $current = $current->getNext();
+            if ($current->getKey() === $key) {
+                return $current;
+            }
+        } while ($current->getNext() !== $this->head);
+
+        return null;
     }
 
     /**
@@ -41,26 +80,25 @@ class LinkedList implements LinkedListInterface
      */
     public function remove($key): bool
     {
-        if ($this->first === null) {
+        if ($this->head === null) {
             return false;
         }
 
-        $previous = null;
-        $current = new LinkedListNode(null, null); // fake first node
-        $current->setNext($this->first);
-
+        $previous = $this->head;
+        $current = $this->head->getNext();
         do {
-            $previous = $current;
-            $current = $current->getNext();
             if ($current->getKey() === $key) {
                 $previous->setNext($current->getNext());
-                if ($current === $this->first) {
-                    $this->first = $current->getNext();
+                if ($current === $this->head) {
+                    $this->head = $current->getNext();
                 }
                 unset($current);
                 return true;
             }
-        } while ($current->getNext() !== null);
+            $previous = $current;
+            $current = $current->getNext();
+        } while ($current->getNext() !== $this->head->getNext());
+
         return false;
     }
 
@@ -73,14 +111,14 @@ class LinkedList implements LinkedListInterface
     {
         $count = 0;
 
-        if ($this->first !== null) {
+        if ($this->head !== null) {
             $current = new LinkedListNode(null, null); // fake first node
-            $current->setNext($this->first);
+            $current->setNext($this->head);
 
             do {
                 $current = $current->getNext();
                 $count++;
-            } while ($current->getNext() !== null);
+            } while ($current->getNext() !== $this->head);
         }
 
         return $count;
@@ -107,7 +145,7 @@ class LinkedList implements LinkedListInterface
      */
     public function first()
     {
-        return $this->first;
+        return $this->head;
     }
 
     /**
@@ -118,7 +156,7 @@ class LinkedList implements LinkedListInterface
     public function printOut()
     {
         $current = new LinkedListNode(null, null); // fake first node
-        $current->setNext($this->first);
+        $current->setNext($this->head);
         $index = 1;
 
         do {
@@ -130,46 +168,8 @@ class LinkedList implements LinkedListInterface
             echo $index . '. - key: ' . $current->getKey() . PHP_EOL;
             echo '     value: ' . $current->getValue() . PHP_EOL;
             $index++;
-        } while ($current->getNext() !== null);
+        } while ($current->getNext() !== $this->head);
 
         return true;
-    }
-
-    /**
-     * Creates first element when empty list.
-     *
-     * @param  $key
-     * @param  $value
-     * @return bool
-     */
-    private function init($key, $value)
-    {
-        $this->first = new LinkedListNode($key, $value);
-        $this->last = $this->first;
-        return $this->last;
-    }
-
-    /**
-    * Find and return a node with a given key.
-    *
-    * @param $key a node's key.
-    * @return LinkedListNode|null
-    */
-    private function find($key)
-    {
-        if ($this->first === null) {
-            return null;
-        }
-        $current = new LinkedListNode(null, null); // fake first node
-        $current->setNext($this->first);
-
-        do {
-            $current = $current->getNext();
-            if ($current->getKey() === $key) {
-                return $current;
-            }
-        } while ($current->getNext() !== null);
-
-        return null;
     }
 }
