@@ -7,6 +7,7 @@ use Algo\Sort\SelectionSort;
 use Algo\Sort\BubbleSort;
 use Algo\Sort\InsertionSort;
 use Algo\Sort\MergeSort;
+use Algo\Sort\QuickSort;
 use Faker;
 
 final class SortTest extends TestCase
@@ -58,13 +59,23 @@ final class SortTest extends TestCase
         $this->assertTrue($this->isSorted($array));
     }
 
-    public function testmergeSort()
+    public function testMergeSort()
     {
         $array = [];
         for ($i=0; $i<10; $i++) {
             $array[] = $this->faker->randomNumber(3);
         }
         $this->assertTrue(MergeSort::sort($array));
+        $this->assertTrue($this->isSorted($array));
+    }
+
+    public function testQuickSort()
+    {
+        $array = [];
+        for ($i=0; $i<10; $i++) {
+            $array[] = $this->faker->randomNumber(3);
+        }
+        $this->assertTrue(QuickSort::sort($array));
         $this->assertTrue($this->isSorted($array));
     }
 }
