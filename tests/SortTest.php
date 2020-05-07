@@ -5,6 +5,7 @@ namespace Tests;
 use PHPUnit\Framework\TestCase;
 use Algo\Sort\SelectionSort;
 use Algo\Sort\BubbleSort;
+use Algo\Sort\InsertionSort;
 use Faker;
 
 final class SortTest extends TestCase
@@ -43,6 +44,16 @@ final class SortTest extends TestCase
             $array[] = $this->faker->randomNumber(3);
         }
         $this->assertTrue(BubbleSort::sort($array));
+        $this->assertTrue($this->isSorted($array));
+    }
+
+    public function testInsertionSort()
+    {
+        $array = [];
+        for ($i=0; $i<10; $i++) {
+            $array[] = $this->faker->randomNumber(3);
+        }
+        $this->assertTrue(InsertionSort::sort($array));
         $this->assertTrue($this->isSorted($array));
     }
 }

@@ -21,3 +21,4 @@ Implemented so far:
 - Breadth-first search
 - Selection Sort
 - Bubble Sort
+- Insertion Sort
