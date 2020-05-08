@@ -18,9 +18,19 @@ Implemented so far:
 
 ## Algorithms
 Implemented so far:
+
+### Trees
 - Breadth-first search
+
+### Sort
 - Selection Sort
 - Bubble Sort
 - Insertion Sort
 - Merge Sort
 - Quick Sort
+
+### Search
+- Linear Search
+- Binary Search
+- Jump Search
+- Interpolation Search

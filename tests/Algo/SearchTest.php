@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Algo\Search\LinearSearch;
 use Algo\Search\BinarySearch;
 use Algo\Search\JumpSearch;
+use Algo\Search\InterpolationSearch;
 use Algo\Sort\QuickSort;
 use Faker;
 
@@ -43,7 +44,7 @@ final class SearchTest extends TestCase
 
     public function testLinearSearchNotFound()
     {
-        $this->assertEquals(-1, LinearSearch::search($this->array, $this->item+1));
+        $this->assertEquals(-1, LinearSearch::search($this->array, $this->faker->randomNumber(4)));
     }
 
     public function testBinarySearch()
@@ -54,7 +55,7 @@ final class SearchTest extends TestCase
 
     public function testBinarySearchNotFound()
     {
-        $this->assertEquals(-1, BinarySearch::search($this->array, $this->item+1));
+        $this->assertEquals(-1, BinarySearch::search($this->array, $this->faker->randomNumber(4)));
     }
 
     public function testJumpSearch()
@@ -65,6 +66,17 @@ final class SearchTest extends TestCase
 
     public function testJumpSearchNotFound()
     {
-        $this->assertEquals(-1, JumpSearch::search($this->array, $this->item+1));
+        $this->assertEquals(-1, JumpSearch::search($this->array, $this->faker->randomNumber(4)));
+    }
+
+    public function testInterpolationSearch()
+    {
+        $position = InterpolationSearch::search($this->array, $this->item);
+        $this->assertTrue($this->isFound($this->array, $this->item, $position));
+    }
+
+    public function testInterpolationSearchNotFound()
+    {
+        $this->assertEquals(-1, InterpolationSearch::search($this->array, $this->faker->randomNumber(3)));
     }
 }
