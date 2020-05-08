@@ -37,3 +37,4 @@ Implemented so far:
 
 ### Pattern Search
 - Naive Search
+- Knuth-Morris-Pratt(KMP) Search
