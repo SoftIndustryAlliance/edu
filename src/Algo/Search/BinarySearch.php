@@ -6,7 +6,7 @@ class BinarySearch implements SearchInterface
 {
     public static function search(array $array, int $item): int
     {
-        return self::binarySearch($array, $item, 0, count($array));
+        return self::binarySearch($array, $item, 0, count($array) - 1);
     }
 
     private static function binarySearch(array $array, int $item, int $from, int $to): int

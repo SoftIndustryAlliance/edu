@@ -5,6 +5,7 @@ namespace Tests;
 use PHPUnit\Framework\TestCase;
 use Algo\Search\LinearSearch;
 use Algo\Search\BinarySearch;
+use Algo\Search\JumpSearch;
 use Algo\Sort\QuickSort;
 use Faker;
 
@@ -54,5 +55,16 @@ final class SearchTest extends TestCase
     public function testBinarySearchNotFound()
     {
         $this->assertEquals(-1, BinarySearch::search($this->array, $this->item+1));
+    }
+
+    public function testJumpSearch()
+    {
+        $position = JumpSearch::search($this->array, $this->item);
+        $this->assertTrue($this->isFound($this->array, $this->item, $position));
+    }
+
+    public function testJumpSearchNotFound()
+    {
+        $this->assertEquals(-1, JumpSearch::search($this->array, $this->item+1));
     }
 }
