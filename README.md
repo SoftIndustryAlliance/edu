@@ -34,3 +34,6 @@ Implemented so far:
 - Binary Search
 - Jump Search
 - Interpolation Search
+
+### Pattern Search
+- Naive Search
