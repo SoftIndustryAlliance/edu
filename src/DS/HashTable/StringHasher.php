@@ -15,7 +15,8 @@ class StringHasher implements HasherInterface
     {
         $hash = 0;
         $pow = 1;
-        for ($i = 0; $i < strlen($key); $i++) {
+        $length = strlen($key);
+        for ($i = 0; $i < $length; $i++) {
             $hash = ($hash + ord($key[$i]) * $pow) % self::RANGE;
             $pow = ($pow * self::PRIMENUMBER) % self::RANGE;
         }

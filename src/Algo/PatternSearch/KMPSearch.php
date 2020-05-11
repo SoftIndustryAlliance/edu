@@ -40,7 +40,7 @@ class KMPSearch implements PatternSearchInterface
         return $result;
     }
 
-    private static function createLPS(&$lps, $pattern)
+    private static function createLPS(&$lps, string $pattern)
     {
         $j = 0;
         $i = 1;

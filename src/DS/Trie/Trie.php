@@ -22,7 +22,8 @@ class Trie implements TrieInterface
     public function find(string $key)
     {
         $node = $this->head;
-        for ($i = 0; $i < strlen($key); $i++) {
+        $length = strlen($key);
+        for ($i = 0; $i < $length; $i++) {
             if (!$node->checkChild($key[$i])) {
                 return null;
             }
@@ -34,7 +35,8 @@ class Trie implements TrieInterface
     public function insert(string $key, $value)
     {
         $node = $this->head;
-        for ($i = 0; $i < strlen($key); $i++) {
+        $length = strlen($key);
+        for ($i = 0; $i < $length; $i++) {
             if (!$node->checkChild($key[$i])) {
                 $node->setChild($key[$i], new TrieNode());
             }
@@ -56,7 +58,8 @@ class Trie implements TrieInterface
 
         //find last node for given prefix
         $node = $this->head;
-        for ($i = 0; $i < strlen($key); $i++) {
+        $length = strlen($key);
+        for ($i = 0; $i < $length; $i++) {
             if (!$node->checkChild($key[$i])) {
                 return null;
             }
@@ -91,7 +94,8 @@ class Trie implements TrieInterface
 
         //find last node for given prefix
         $node = $this->head;
-        for ($i = 0; $i < strlen($key); $i++) {
+        $length = strlen($key);
+        for ($i = 0; $i < $length; $i++) {
             if (!$node->checkChild($key[$i])) {
                 return null;
             }

@@ -5,6 +5,7 @@ namespace Tests;
 use PHPUnit\Framework\TestCase;
 use Algo\PatternSearch\NaiveSearch;
 use Algo\PatternSearch\KMPSearch;
+use Algo\PatternSearch\RabinKarpSearch;
 use Faker;
 
 final class PatternSearchTest extends TestCase
@@ -59,6 +60,26 @@ final class PatternSearchTest extends TestCase
         $string = 'AABAACAADAABAABA';
         $pattern = 'AAF';
         $result = KMPSearch::search($string, $pattern);
+
+        $this->assertFalse($this->isFound($result));
+        $this->assertEquals([], $result);
+    }
+
+    public function testRabinKarpSearch()
+    {
+        $string = 'AABAACAADAABAABA';
+        $pattern = 'AABA';
+        $result = RabinKarpSearch::search($string, $pattern);
+
+        $this->assertTrue($this->isFound($result));
+        $this->assertEquals([0,9,12], $result);
+    }
+
+    public function testRabinKarpSearchNotFound()
+    {
+        $string = 'AABAACAADAABAABA';
+        $pattern = 'AAF';
+        $result = RabinKarpSearch::search($string, $pattern);
 
         $this->assertFalse($this->isFound($result));
         $this->assertEquals([], $result);
