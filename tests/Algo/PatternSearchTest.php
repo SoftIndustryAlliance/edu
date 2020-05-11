@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Algo\PatternSearch\NaiveSearch;
 use Algo\PatternSearch\KMPSearch;
 use Algo\PatternSearch\RabinKarpSearch;
+use Algo\PatternSearch\ZArraySearch;
 use Faker;
 
 final class PatternSearchTest extends TestCase
@@ -80,6 +81,26 @@ final class PatternSearchTest extends TestCase
         $string = 'AABAACAADAABAABA';
         $pattern = 'AAF';
         $result = RabinKarpSearch::search($string, $pattern);
+
+        $this->assertFalse($this->isFound($result));
+        $this->assertEquals([], $result);
+    }
+
+    public function testZArraySearch()
+    {
+        $string = 'AABAACAADAABAABA';
+        $pattern = 'AABA';
+        $result = ZArraySearch::search($string, $pattern);
+
+        $this->assertTrue($this->isFound($result));
+        $this->assertEquals([0,9,12], $result);
+    }
+
+    public function testZArraySearchNotFound()
+    {
+        $string = 'AABAACAADAABAABA';
+        $pattern = 'AAF';
+        $result = ZArraySearch::search($string, $pattern);
 
         $this->assertFalse($this->isFound($result));
         $this->assertEquals([], $result);

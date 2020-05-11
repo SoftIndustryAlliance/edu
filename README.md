@@ -39,3 +39,4 @@ Implemented so far:
 - Naive Search
 - Knuth-Morris-Pratt(KMP) Search
 - Rabin-Karp Search
+- Z-Algorithm Search
