@@ -56,4 +56,16 @@ final class LinkedListTest extends TestCase
         $this->linkedList->remove('a key 3');
         $this->assertEquals(2, count($this->linkedList));
     }
+
+    public function testLinkedListIterator()
+    {
+        for ($i=0; $i<3; $i++) {
+            $this->linkedList->insert($this->faker->name, $this->faker->sentence);
+        }
+        $this->linkedList->insert('a key 3', 'node value 3');
+        $this->assertEquals(4, count($this->linkedList));
+        $this->linkedList->remove('a key 3');
+        $this->assertIsIterable($this->linkedList);
+        $this->assertEquals(3, count($this->linkedList));
+    }
 }

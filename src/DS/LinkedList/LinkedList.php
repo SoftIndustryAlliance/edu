@@ -4,11 +4,14 @@ namespace DS\LinkedList;
 
 use DS\LinkedList\LinkedListNode;
 use \Countable;
+use \Iterator;
 
-class LinkedList implements LinkedListInterface, Countable
+class LinkedList implements LinkedListInterface, Countable, Iterator
 {
     private $first = null;
     private $last = null;
+    private $count = 0;
+    private $current = null;
 
     /**
      * Inserts or updates a node.
@@ -32,6 +35,7 @@ class LinkedList implements LinkedListInterface, Countable
         // Insert new last.
         $this->last->setNext(new LinkedListNode($key, $value));
         $this->last = $this->last->getNext();
+        $this->count++;
         return $this->last;
     }
 
@@ -59,6 +63,7 @@ class LinkedList implements LinkedListInterface, Countable
                     $this->first = $current->getNext();
                 }
                 unset($current);
+                $this->count--;
                 return true;
             }
         } while ($current->getNext() !== null);
@@ -72,19 +77,7 @@ class LinkedList implements LinkedListInterface, Countable
      */
     public function count(): int
     {
-        $count = 0;
-
-        if ($this->first !== null) {
-            $current = new LinkedListNode(null, null); // fake first node
-            $current->setNext($this->first);
-
-            do {
-                $current = $current->getNext();
-                $count++;
-            } while ($current->getNext() !== null);
-        }
-
-        return $count;
+        return $this->count;
     }
 
     /**
@@ -147,6 +140,7 @@ class LinkedList implements LinkedListInterface, Countable
     {
         $this->first = new LinkedListNode($key, $value);
         $this->last = $this->first;
+        $this->count = 1;
         return $this->last;
     }
 
@@ -172,5 +166,47 @@ class LinkedList implements LinkedListInterface, Countable
         } while ($current->getNext() !== null);
 
         return null;
+    }
+
+    /**
+     * Implementation of \Iterator interface.
+     */
+    public function rewind()
+    {
+        $this->current = $this->first;
+    }
+
+    /**
+     * Implementation of \Iterator interface.
+     */
+    public function current()
+    {
+        return $this->current;
+    }
+
+    /**
+     * Implementation of \Iterator interface.
+     */
+    public function key()
+    {
+        return $this->current->getKey();
+    }
+
+    /**
+     * Implementation of \Iterator interface.
+     */
+    public function next()
+    {
+        if ($this->current !== null) {
+            $this->current = $this->current->getNext();
+        }
+    }
+
+    /**
+     * Implementation of \Iterator interface.
+     */
+    public function valid()
+    {
+        return $this->current !== null;
     }
 }
