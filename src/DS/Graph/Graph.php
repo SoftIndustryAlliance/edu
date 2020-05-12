@@ -45,6 +45,17 @@ class Graph implements GraphInterface
         return $this->graph[$source]->get($dest);
     }
 
+    /**
+     * Get vertex's adjasent nodes.
+     */
+    public function getVertex(int $source): ?LinkedList
+    {
+        if (!isset($this->graph[$source])) {
+            return null;
+        }
+        return $this->graph[$source];
+    }
+
     public function printGraph()
     {
         $verticesCount = count($this->graph);
