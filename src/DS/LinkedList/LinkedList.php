@@ -3,8 +3,9 @@
 namespace DS\LinkedList;
 
 use DS\LinkedList\LinkedListNode;
+use \Countable;
 
-class LinkedList implements LinkedListInterface
+class LinkedList implements LinkedListInterface, Countable
 {
     private $first = null;
     private $last = null;
