@@ -4,6 +4,7 @@ namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 use DS\Graph\Graph;
+use DS\LinkedList\LinkedList;
 use Faker;
 
 final class GraphTest extends TestCase
@@ -37,5 +38,15 @@ final class GraphTest extends TestCase
         $this->assertTrue($this->graph->removeEdge('0', '2'));
         $this->assertNull($this->graph->getEdge('0', '2'));
         $this->assertNull($this->graph->getEdge('2', '0'));
+    }
+
+    public function testGraphGetVertex()
+    {
+        $this->graph->addEdge('0', '1', $this->faker->randomNumber(2));
+        $this->graph->addEdge('0', '2', 16);
+        $this->graph->addEdge('2', '3', $this->faker->randomNumber(2));
+
+        $this->assertInstanceOf(LinkedList::class, $this->graph->getVertex('3'));
+        $this->assertNull($this->graph->getVertex('4'));
     }
 }

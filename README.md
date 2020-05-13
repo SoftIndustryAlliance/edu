@@ -15,11 +15,15 @@ Implemented so far:
 - Binary Search Tree (TODO: needs rewrite)
 - Queue
 - Stack
+- Graph (Adjacency List)
 
 ## Algorithms
 Implemented so far:
 
 ### Trees
+- Breadth-first search
+
+### Graph
 - Breadth-first search
 
 ### Sort

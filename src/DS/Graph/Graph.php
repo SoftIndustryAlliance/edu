@@ -5,7 +5,7 @@ namespace DS\Graph;
 use DS\LinkedList\LinkedList;
 
 /**
- * Graph implementation using Adjacency List.
+ * Undirected graph implementation using Adjacency List.
  */
 class Graph implements GraphInterface
 {
