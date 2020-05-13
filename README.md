@@ -25,6 +25,7 @@ Implemented so far:
 
 ### Graph
 - Breadth-first search
+- Depth-First search
 
 ### Sort
 - Selection Sort
