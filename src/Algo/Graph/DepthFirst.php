@@ -3,7 +3,7 @@
 namespace Algo\Graph;
 
 use DS\Stack\Stack;
-use DS\Graph\Graph;
+use DS\Graph\GraphInterface;
 
 class DepthFirst implements TraverseInterface
 {
@@ -16,7 +16,7 @@ class DepthFirst implements TraverseInterface
         $this->stack = new Stack();
     }
 
-    public function traverse(Graph $graph, int $vertex): array
+    public function traverse(GraphInterface $graph, int $vertex): array
     {
         $this->visited = [];
         $result = [];

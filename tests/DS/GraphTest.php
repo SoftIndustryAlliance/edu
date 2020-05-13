@@ -53,6 +53,15 @@ final class GraphTest extends TestCase
         $this->assertNull($this->graph->getVertex('4'));
     }
 
+    public function testGraphGetVertices()
+    {
+        $this->graph->addEdge('0', '5', $this->faker->randomNumber(2));
+        $this->graph->addEdge('0', '2', 16);
+        $this->graph->addEdge('2', '3', $this->faker->randomNumber(2));
+
+        $this->assertEquals([0, 5, 2, 3], $this->graph->getVertices());
+    }
+
     public function testDirectedGraphGetEdge()
     {
         $this->directedGraph->addEdge('0', '1', $this->faker->randomNumber(2));
@@ -83,5 +92,14 @@ final class GraphTest extends TestCase
 
         $this->assertInstanceOf(LinkedList::class, $this->directedGraph->getVertex('3'));
         $this->assertNull($this->directedGraph->getVertex('4'));
+    }
+
+    public function testDirectedGraphGetVertices()
+    {
+        $this->directedGraph->addEdge('0', '5', $this->faker->randomNumber(2));
+        $this->directedGraph->addEdge('0', '2', 16);
+        $this->directedGraph->addEdge('2', '3', $this->faker->randomNumber(2));
+
+        $this->assertEquals([0, 5, 2, 3], $this->directedGraph->getVertices());
     }
 }

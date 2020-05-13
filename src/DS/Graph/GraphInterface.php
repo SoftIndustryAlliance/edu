@@ -10,4 +10,5 @@ interface GraphInterface
     public function removeEdge(int $source, int $dest): bool;
     public function getEdge(int $source, int $dest);
     public function getVertex(int $source): ?LinkedList;
+    public function getVertices(): array;
 }

@@ -3,7 +3,7 @@
 namespace Algo\Graph;
 
 use DS\Queue\Queue;
-use DS\Graph\Graph;
+use DS\Graph\GraphInterface;
 
 class BreadthFirst implements TraverseInterface
 {
@@ -16,7 +16,7 @@ class BreadthFirst implements TraverseInterface
         $this->queue = new Queue();
     }
 
-    public function traverse(Graph $graph, int $vertex): array
+    public function traverse(GraphInterface $graph, int $vertex): array
     {
         $this->visited = [];
         $result = [];

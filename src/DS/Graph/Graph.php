@@ -56,6 +56,14 @@ class Graph implements GraphInterface
         return $this->graph[$source];
     }
 
+    /**
+     * Get all vertices.
+     */
+    public function getVertices(): array
+    {
+        return array_keys($this->graph);
+    }
+
     public function printGraph()
     {
         $verticesCount = count($this->graph);

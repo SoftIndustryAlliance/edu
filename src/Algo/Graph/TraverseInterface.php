@@ -2,9 +2,9 @@
 
 namespace Algo\Graph;
 
-use DS\Graph\Graph;
+use DS\Graph\GraphInterface;
 
 interface TraverseInterface
 {
-    public function traverse(Graph $graph, int $vertex): array;
+    public function traverse(GraphInterface $graph, int $vertex): array;
 }
