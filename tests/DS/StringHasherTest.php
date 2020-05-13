@@ -1,5 +1,5 @@
 <?php
-namespace Tests;
+namespace Tests\DS;
 
 use PHPUnit\Framework\TestCase;
 use DS\HashTable\StringHasher;

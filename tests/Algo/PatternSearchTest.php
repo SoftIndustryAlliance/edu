@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Tests\Algo;
 
 use PHPUnit\Framework\TestCase;
 use Algo\PatternSearch\NaiveSearch;
