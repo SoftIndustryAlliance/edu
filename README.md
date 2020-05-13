@@ -16,6 +16,7 @@ Implemented so far:
 - Queue
 - Stack
 - Graph (Adjacency List)
+- Directed Graph (Adjacency List)
 
 ## Algorithms
 Implemented so far:

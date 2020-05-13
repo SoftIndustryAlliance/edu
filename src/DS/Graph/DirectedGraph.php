@@ -5,9 +5,9 @@ namespace DS\Graph;
 use DS\LinkedList\LinkedList;
 
 /**
- * Undirected graph implementation using Adjacency List.
+ * Directed graph implementation using Adjacency List.
  */
-class Graph implements GraphInterface
+class DirectedGraph implements GraphInterface
 {
     private $graph = [];
 
@@ -23,15 +23,14 @@ class Graph implements GraphInterface
         if (!isset($this->graph[$dest])) {
             $this->graph[$dest] = new LinkedList();
         }
-        $this->graph[$dest]->insert($source, $weight);
     }
 
     public function removeEdge(int $source, int $dest): bool
     {
-        if (!isset($this->graph[$source]) || !isset($this->graph[$dest])) {
+        if (!isset($this->graph[$source])) {
             return false;
         }
-        return $this->graph[$source]->remove($dest) && $this->graph[$dest]->remove($source);
+        return $this->graph[$source]->remove($dest);
     }
 
     /**
@@ -39,7 +38,7 @@ class Graph implements GraphInterface
      */
     public function getEdge(int $source, int $dest)
     {
-        if (!isset($this->graph[$source]) || !isset($this->graph[$source])) {
+        if (!isset($this->graph[$source])) {
             return null;
         }
         return $this->graph[$source]->get($dest);
