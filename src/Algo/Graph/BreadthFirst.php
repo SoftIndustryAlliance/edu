@@ -18,9 +18,11 @@ class BreadthFirst implements TraverseInterface
 
     public function traverse(Graph $graph, int $vertex): array
     {
+        $this->visited = [];
+        $result = [];
+
         $this->queue->enqueue($vertex);
         $this->visited[$vertex] = 1;
-        $result = [];
 
         while (!$this->queue->isEmpty()) {
             $currentVertex = $this->queue->dequeue();

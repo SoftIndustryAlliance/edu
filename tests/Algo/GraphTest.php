@@ -23,12 +23,11 @@ final class GraphTest extends TestCase
     {
         $this->graph->addEdge('0', '1', $this->faker->randomNumber(2));
         $this->graph->addEdge('0', '2', $this->faker->randomNumber(2));
-        $this->graph->addEdge('1', '2', $this->faker->randomNumber(2));
-        $this->graph->addEdge('2', '0', $this->faker->randomNumber(2));
+        $this->graph->addEdge('1', '3', $this->faker->randomNumber(2));
         $this->graph->addEdge('2', '3', $this->faker->randomNumber(2));
-        $this->graph->addEdge('3', '3', $this->faker->randomNumber(2));
+        $this->graph->addEdge('3', '4', $this->faker->randomNumber(2));
         $traverse = new BreadthFirst();
-        $this->assertEquals([2, 0, 1, 3], $traverse->traverse($this->graph, 2));
+        $this->assertEquals([0, 1, 2, 3, 4], $traverse->traverse($this->graph, 0));
     }
 
     public function testGraphDepthFirst()
@@ -36,11 +35,9 @@ final class GraphTest extends TestCase
         $this->graph->addEdge('0', '1', $this->faker->randomNumber(2));
         $this->graph->addEdge('0', '2', $this->faker->randomNumber(2));
         $this->graph->addEdge('1', '3', $this->faker->randomNumber(2));
-        $this->graph->addEdge('2', '4', $this->faker->randomNumber(2));
-        $this->graph->addEdge('4', '5', $this->faker->randomNumber(2));
-        $this->graph->addEdge('4', '6', $this->faker->randomNumber(2));
-        $this->graph->addEdge('6', '7', $this->faker->randomNumber(2));
+        $this->graph->addEdge('2', '3', $this->faker->randomNumber(2));
+        $this->graph->addEdge('3', '4', $this->faker->randomNumber(2));
         $traverse = new DepthFirst();
-        $this->assertEquals([0, 2, 4, 6, 7, 5, 1, 3], $traverse->traverse($this->graph, 0));
+        $this->assertEquals([0, 2, 3, 4, 1], $traverse->traverse($this->graph, 0));
     }
 }

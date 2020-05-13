@@ -18,9 +18,11 @@ class DepthFirst implements TraverseInterface
 
     public function traverse(Graph $graph, int $vertex): array
     {
+        $this->visited = [];
+        $result = [];
+
         $this->stack->push($vertex);
         $this->visited[$vertex] = 1;
-        $result = [];
 
         while (!$this->stack->isEmpty()) {
             $currentVertex = $this->stack->pop();
