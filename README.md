@@ -5,7 +5,6 @@
 PHP self-educational project for data structures and algorithms.
 
 ## Data structures
-Implemented so far:
 - HashTable (TODO: proper scaling process)
 - MinHeap
 - Linked List
@@ -19,7 +18,6 @@ Implemented so far:
 - Directed Graph (Adjacency List)
 
 ## Algorithms
-Implemented so far:
 
 ### Trees
 - Breadth-first search
@@ -47,3 +45,8 @@ Implemented so far:
 - Knuth-Morris-Pratt(KMP) Search
 - Rabin-Karp Search
 - Z-Algorithm Search
+
+## Design patterns
+
+### Creational
+- [Abstract Factory](https://en.wikipedia.org/wiki/Abstract_factory_pattern)
