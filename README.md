@@ -50,3 +50,4 @@ PHP self-educational project for data structures and algorithms.
 
 ### Creational
 - [Abstract Factory](https://en.wikipedia.org/wiki/Abstract_factory_pattern)
+- [Builder](https://en.wikipedia.org/wiki/Builder_pattern)
