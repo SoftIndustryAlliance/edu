@@ -73,4 +73,19 @@ final class CreationalTest extends TestCase
             $report->makeReport()->printReport($this->faker->randomNumber(3))
         );
     }
+
+    public function testPrototype()
+    {
+        $report = new \OOP\Creational\Prototype\Report($this->faker->randomNumber(3));
+        $reportPage = new \OOP\Creational\Prototype\ReportPage($report);
+        $reportPage->setTitle('A report page title.');
+        $reportPage->setFooter('A report page footer.');
+        for ($i=1; $i<=10; $i++) {
+            $reportPage = clone $reportPage;
+            $this->assertStringContainsString(
+                'Content for page number '.$i,
+                $reportPage->printPage()
+            );
+        }
+    }
 }
