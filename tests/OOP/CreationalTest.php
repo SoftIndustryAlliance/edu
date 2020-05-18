@@ -88,4 +88,12 @@ final class CreationalTest extends TestCase
             );
         }
     }
+
+    public function testSingleton()
+    {
+        $reportConfig = \OOP\Creational\Singleton\ReportConfig::getInstanse();
+        $reportConfig->setValue('test', 'value');
+        $reportConfig1 = \OOP\Creational\Singleton\ReportConfig::getInstanse();
+        $this->assertEquals($reportConfig->getValue('test'), $reportConfig1->getValue('test'));
+    }
 }
