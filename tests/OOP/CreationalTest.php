@@ -10,6 +10,8 @@ use OOP\Creational\Builder\ReportPage;
 use OOP\Creational\Builder\Director;
 use OOP\Creational\Builder\FullReport;
 use OOP\Creational\Builder\SimpleReport;
+use OOP\Creational\FactoryMethod\HTMLReportPage;
+use OOP\Creational\FactoryMethod\PDFReportPage;
 use Faker;
 
 final class CreationalTest extends TestCase
@@ -52,6 +54,23 @@ final class CreationalTest extends TestCase
         $this->assertStringContainsString(
             'This is a pager for',
             $report->printReport($this->faker->randomNumber(3))
+        );
+    }
+
+    public function testFactoryMethod()
+    {
+        // generate a PDF report
+        $report = new PDFReportPage();
+        $this->assertStringContainsString(
+            'This is a PDF report builder',
+            $report->makeReport()->printReport($this->faker->randomNumber(3))
+        );
+
+        // generate a HTML report
+        $report = new HTMLReportPage();
+        $this->assertStringContainsString(
+            'This is a HTML report builder',
+            $report->makeReport()->printReport($this->faker->randomNumber(3))
         );
     }
 }
