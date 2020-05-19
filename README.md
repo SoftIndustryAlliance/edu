@@ -54,3 +54,6 @@ PHP self-educational project for data structures and algorithms.
 - [Factory Method](https://en.wikipedia.org/wiki/Factory_method_pattern)
 - [Prototype pattern](https://en.wikipedia.org/wiki/Prototype_pattern)
 - [Singleton](https://en.wikipedia.org/wiki/Singleton_pattern)
+
+### Structural
+- [Adapter](https://en.wikipedia.org/wiki/Adapter_pattern)

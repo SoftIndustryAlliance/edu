@@ -3,15 +3,11 @@
 namespace Tests\OOP;
 
 use PHPUnit\Framework\TestCase;
-use OOP\Creational\AbstractFactory\Report;
-use OOP\Creational\AbstractFactory\PDFReportFactory;
-use OOP\Creational\AbstractFactory\HTMLReportFactory;
-use OOP\Creational\Builder\ReportPage;
-use OOP\Creational\Builder\Director;
-use OOP\Creational\Builder\FullReport;
-use OOP\Creational\Builder\SimpleReport;
-use OOP\Creational\FactoryMethod\HTMLReportPage;
-use OOP\Creational\FactoryMethod\PDFReportPage;
+use OOP\Creational\AbstractFactory;
+use OOP\Creational\Builder;
+use OOP\Creational\FactoryMethod;
+use OOP\Creational\Prototype;
+use OOP\Creational\Singleton;
 use Faker;
 
 final class CreationalTest extends TestCase
@@ -26,14 +22,14 @@ final class CreationalTest extends TestCase
     public function testAbstractFactory()
     {
         // generate a PDF report
-        $report = new Report(new PDFReportFactory());
+        $report = new AbstractFactory\Report(new AbstractFactory\PDFReportFactory());
         $this->assertStringContainsString(
             'This is a PDF report builder',
             $report->printReport($this->faker->randomNumber(3))
         );
 
         // generate a HTML report
-        $report = new Report(new HTMLReportFactory());
+        $report = new AbstractFactory\Report(new AbstractFactory\HTMLReportFactory());
         $this->assertStringContainsString(
             'This is a HTML report builder',
             $report->printReport($this->faker->randomNumber(3))
@@ -43,14 +39,14 @@ final class CreationalTest extends TestCase
     public function testBuilder()
     {
         // generate a simple report
-        $report = new ReportPage(new Director(new SimpleReport()));
+        $report = new Builder\ReportPage(new Builder\Director(new Builder\SimpleReport()));
         $this->assertStringContainsString(
             'This is a simple header for',
             $report->printReport($this->faker->randomNumber(3))
         );
 
         // generate a full report
-        $report = new ReportPage(new Director(new FullReport()));
+        $report = new Builder\ReportPage(new Builder\Director(new Builder\FullReport()));
         $this->assertStringContainsString(
             'This is a pager for',
             $report->printReport($this->faker->randomNumber(3))
@@ -60,14 +56,14 @@ final class CreationalTest extends TestCase
     public function testFactoryMethod()
     {
         // generate a PDF report
-        $report = new PDFReportPage();
+        $report = new FactoryMethod\PDFReportPage();
         $this->assertStringContainsString(
             'This is a PDF report builder',
             $report->makeReport()->printReport($this->faker->randomNumber(3))
         );
 
         // generate a HTML report
-        $report = new HTMLReportPage();
+        $report = new FactoryMethod\HTMLReportPage();
         $this->assertStringContainsString(
             'This is a HTML report builder',
             $report->makeReport()->printReport($this->faker->randomNumber(3))
@@ -76,8 +72,8 @@ final class CreationalTest extends TestCase
 
     public function testPrototype()
     {
-        $report = new \OOP\Creational\Prototype\Report($this->faker->randomNumber(3));
-        $reportPage = new \OOP\Creational\Prototype\ReportPage($report);
+        $report = new Prototype\Report($this->faker->randomNumber(3));
+        $reportPage = new Prototype\ReportPage($report);
         $reportPage->setTitle('A report page title.');
         $reportPage->setFooter('A report page footer.');
         for ($i=1; $i<=10; $i++) {
@@ -91,9 +87,9 @@ final class CreationalTest extends TestCase
 
     public function testSingleton()
     {
-        $reportConfig = \OOP\Creational\Singleton\ReportConfig::getInstanse();
+        $reportConfig = Singleton\ReportConfig::getInstanse();
         $reportConfig->setValue('test', 'value');
-        $reportConfig1 = \OOP\Creational\Singleton\ReportConfig::getInstanse();
+        $reportConfig1 = Singleton\ReportConfig::getInstanse();
         $this->assertEquals($reportConfig->getValue('test'), $reportConfig1->getValue('test'));
     }
 }
