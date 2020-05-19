@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use OOP\Structural\Adapter;
 use OOP\Structural\Bridge;
 use OOP\Structural\Composite;
+use OOP\Structural\Decorator;
 use Faker;
 
 final class StructuralTest extends TestCase
@@ -53,6 +54,24 @@ final class StructuralTest extends TestCase
         $this->assertStringContainsString(
             'This is a content for report '.$reportId,
             $report->render()
+        );
+    }
+
+    public function testDecorator()
+    {
+        $report = new Decorator\HeaderDecorator(new Decorator\FooterDecorator(new Decorator\SimpleReport()));
+        $report->setHeader('test header');
+        $report->setContent('test content');
+        $report->setFooter('test footer');
+
+        $this->assertStringContainsString(
+            'A Company Logo!',
+            $report->getReport()
+        );
+
+        $this->assertStringContainsString(
+            'A Company Copyright!',
+            $report->getReport()
         );
     }
 }
