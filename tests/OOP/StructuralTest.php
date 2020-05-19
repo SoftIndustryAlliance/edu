@@ -5,6 +5,7 @@ namespace Tests\OOP;
 use PHPUnit\Framework\TestCase;
 use OOP\Structural\Adapter;
 use OOP\Structural\Bridge;
+use OOP\Structural\Composite;
 use Faker;
 
 final class StructuralTest extends TestCase
@@ -39,5 +40,19 @@ final class StructuralTest extends TestCase
 
         $report->setSender($cloudSender);
         $this->assertTrue($report->send());
+    }
+
+    public function testComposite()
+    {
+        $reportId = $this->faker->randomNumber(3);
+        $report = new Composite\Report($reportId);
+        $report->addComponent(new Composite\Header($reportId));
+        $report->addComponent(new Composite\Content($reportId));
+        $report->addComponent(new Composite\Footer($reportId));
+
+        $this->assertStringContainsString(
+            'This is a content for report '.$reportId,
+            $report->render()
+        );
     }
 }

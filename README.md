@@ -58,3 +58,4 @@ PHP self-educational project for data structures and algorithms.
 ### Structural
 - [Adapter](https://en.wikipedia.org/wiki/Adapter_pattern)
 - [Bridge](https://en.wikipedia.org/wiki/Bridge_pattern)
+- [Composite](https://en.wikipedia.org/wiki/Composite_pattern)
