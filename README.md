@@ -60,3 +60,4 @@ PHP self-educational project for data structures and algorithms.
 - [Bridge](https://en.wikipedia.org/wiki/Bridge_pattern)
 - [Composite](https://en.wikipedia.org/wiki/Composite_pattern)
 - [Decorator](https://en.wikipedia.org/wiki/Decorator_pattern)
+- [Facade](https://en.wikipedia.org/wiki/Facade_pattern)

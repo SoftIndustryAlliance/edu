@@ -7,6 +7,7 @@ use OOP\Structural\Adapter;
 use OOP\Structural\Bridge;
 use OOP\Structural\Composite;
 use OOP\Structural\Decorator;
+use OOP\Structural\Facade;
 use Faker;
 
 final class StructuralTest extends TestCase
@@ -72,6 +73,23 @@ final class StructuralTest extends TestCase
         $this->assertStringContainsString(
             'A Company Copyright!',
             $report->getReport()
+        );
+    }
+
+    public function testFacade()
+    {
+        $reportId = $this->faker->randomNumber(3);
+        $facade = new Facade\ReportFacade();
+        $reportPage = new Facade\ReportPage($facade);
+
+        $this->assertStringContainsString(
+            'Header for '.$reportId,
+            $reportPage->getPageContent($reportId)
+        );
+
+        $this->assertStringContainsString(
+            'Footer for '.$reportId,
+            $reportPage->getPageContent($reportId)
         );
     }
 }
