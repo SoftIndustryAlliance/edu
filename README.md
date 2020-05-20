@@ -61,3 +61,4 @@ PHP self-educational project for data structures and algorithms.
 - [Composite](https://en.wikipedia.org/wiki/Composite_pattern)
 - [Decorator](https://en.wikipedia.org/wiki/Decorator_pattern)
 - [Facade](https://en.wikipedia.org/wiki/Facade_pattern)
+- [Flyweight](https://en.wikipedia.org/wiki/Flyweight_pattern)

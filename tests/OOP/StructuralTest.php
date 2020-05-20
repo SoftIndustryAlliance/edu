@@ -8,6 +8,7 @@ use OOP\Structural\Bridge;
 use OOP\Structural\Composite;
 use OOP\Structural\Decorator;
 use OOP\Structural\Facade;
+use OOP\Structural\Flyweight;
 use Faker;
 
 final class StructuralTest extends TestCase
@@ -91,5 +92,42 @@ final class StructuralTest extends TestCase
             'Footer for '.$reportId,
             $reportPage->getPageContent($reportId)
         );
+    }
+
+    public function testFlyweight()
+    {
+        $types = ['bigLogo', 'smallLogo'];
+        $pageTypes = [
+            'bigLogo' => 'A big logo.',
+            'smallLogo' => 'A small logo.'
+        ];
+
+        $pageTypeFactory = new Flyweight\PageTypeFactory();
+        // Generate some pages of different types
+        for ($i=0; $i<20; $i++) {
+            $type = $this->faker->randomElement($types);
+            $page = new Flyweight\Page(
+                'A page header '.$this->faker->sentence(),
+                'A page content '.$this->faker->sentence(),
+                'A page footer '.$this->faker->sentence(),
+                $pageTypeFactory->getPageType($type, $pageTypes[$type])
+            );
+        }
+
+        // Try to create a big logo page
+        $page = new Flyweight\Page(
+            'A page header '.$this->faker->sentence(),
+            'A page content '.$this->faker->sentence(),
+            'A page footer '.$this->faker->sentence(),
+            $pageTypeFactory->getPageType('bigLogo', $pageTypes['bigLogo'])
+        );
+
+        $this->assertStringContainsString(
+            'A big logo.',
+            $page->render()
+        );
+
+        // Only two flyweight objects created
+        $this->assertEquals(2, count($pageTypeFactory));
     }
 }
