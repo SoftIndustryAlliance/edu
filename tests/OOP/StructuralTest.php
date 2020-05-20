@@ -9,6 +9,7 @@ use OOP\Structural\Composite;
 use OOP\Structural\Decorator;
 use OOP\Structural\Facade;
 use OOP\Structural\Flyweight;
+use OOP\Structural\Proxy;
 use Faker;
 
 final class StructuralTest extends TestCase
@@ -129,5 +130,16 @@ final class StructuralTest extends TestCase
 
         // Only two flyweight objects created
         $this->assertEquals(2, count($pageTypeFactory));
+    }
+
+    public function testProxy()
+    {
+        $reportId = $this->faker->randomNumber(3);
+        $report = new Proxy\ReportProxy();
+
+        $this->assertStringContainsString(
+            '/tmp/report_'.$reportId.'.pdf',
+            $report->generateReport($reportId)
+        );
     }
 }

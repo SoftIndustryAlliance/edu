@@ -62,3 +62,4 @@ PHP self-educational project for data structures and algorithms.
 - [Decorator](https://en.wikipedia.org/wiki/Decorator_pattern)
 - [Facade](https://en.wikipedia.org/wiki/Facade_pattern)
 - [Flyweight](https://en.wikipedia.org/wiki/Flyweight_pattern)
+- [Proxy](https://en.wikipedia.org/wiki/Proxy_pattern)
