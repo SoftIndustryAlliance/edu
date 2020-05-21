@@ -63,3 +63,6 @@ PHP self-educational project for data structures and algorithms.
 - [Facade](https://en.wikipedia.org/wiki/Facade_pattern)
 - [Flyweight](https://en.wikipedia.org/wiki/Flyweight_pattern)
 - [Proxy](https://en.wikipedia.org/wiki/Proxy_pattern)
+
+### Behavioral
+- [Chain of responsibility](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern)
