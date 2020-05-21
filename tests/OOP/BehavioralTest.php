@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use OOP\Behavioral\ChainOfResponsibility;
 use Faker;
 
-final class StructuralTest extends TestCase
+final class BehavioralTest extends TestCase
 {
     protected $faker;
 
