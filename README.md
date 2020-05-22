@@ -66,3 +66,4 @@ PHP self-educational project for data structures and algorithms.
 
 ### Behavioral
 - [Chain of responsibility](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern)
+- [Command](https://en.wikipedia.org/wiki/Command_pattern)
