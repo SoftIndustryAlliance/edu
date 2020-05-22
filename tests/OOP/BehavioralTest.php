@@ -5,6 +5,7 @@ namespace Tests\OOP;
 use PHPUnit\Framework\TestCase;
 use OOP\Behavioral\ChainOfResponsibility;
 use OOP\Behavioral\Command;
+use OOP\Behavioral\Iterator;
 use Faker;
 
 final class BehavioralTest extends TestCase
@@ -55,5 +56,15 @@ final class BehavioralTest extends TestCase
             'Report header',
             $invoker->show(true)
         );
+    }
+
+    public function testIterator()
+    {
+        $report = new Iterator\Report();
+        for ($i=0; $i<10; $i++) {
+            $report->addPage('Page content '.$i);
+        }
+
+        $this->assertInstanceOf(\Traversable::class, $report);
     }
 }
