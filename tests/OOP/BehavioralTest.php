@@ -7,6 +7,7 @@ use OOP\Behavioral\ChainOfResponsibility;
 use OOP\Behavioral\Command;
 use OOP\Behavioral\Iterator;
 use OOP\Behavioral\Mediator;
+use OOP\Behavioral\Memento;
 use Faker;
 
 final class BehavioralTest extends TestCase
@@ -82,6 +83,30 @@ final class BehavioralTest extends TestCase
         $this->assertStringContainsString(
             'Content for report '.$key,
             $reportMediator->getReport()
+        );
+    }
+
+    public function testMemento()
+    {
+        $key = $this->faker->randomNumber(3);
+        $report = new Memento\Report();
+        $reportCaretaker = new Memento\ReportCaretaker($report);
+        $report->generate($key);
+        $reportCaretaker->backup();
+
+        $newKey = $this->faker->randomNumber(3);
+        $report->generate($newKey);
+
+        $this->assertStringContainsString(
+            'Content for key '.$newKey,
+            $report->getReport()
+        );
+
+        $reportCaretaker->undo();
+
+        $this->assertStringContainsString(
+            'Content for key '.$key,
+            $report->getReport()
         );
     }
 }

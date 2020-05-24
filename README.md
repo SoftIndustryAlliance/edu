@@ -69,3 +69,4 @@ PHP self-educational project for data structures and algorithms.
 - [Command](https://en.wikipedia.org/wiki/Command_pattern)
 - [Iterator](https://en.wikipedia.org/wiki/Iterator_pattern)
 - [Mediator](https://en.wikipedia.org/wiki/Mediator_pattern)
+- [Memento](https://en.wikipedia.org/wiki/Memento_pattern)
