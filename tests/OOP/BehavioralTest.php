@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use OOP\Behavioral\ChainOfResponsibility;
 use OOP\Behavioral\Command;
 use OOP\Behavioral\Iterator;
+use OOP\Behavioral\Mediator;
 use Faker;
 
 final class BehavioralTest extends TestCase
@@ -66,5 +67,21 @@ final class BehavioralTest extends TestCase
         }
 
         $this->assertInstanceOf(\Traversable::class, $report);
+    }
+
+    public function testMediator()
+    {
+        $key = $this->faker->randomNumber(3);
+        $reportMediator = new Mediator\ReportMediator();
+        $reportMediator->setHeader(new Mediator\Header());
+        $reportMediator->setContent(new Mediator\Content());
+        $reportMediator->setFooter(new Mediator\Footer());
+        $reportMediator->setReport(new Mediator\Report());
+        $reportMediator->generateReport($key);
+
+        $this->assertStringContainsString(
+            'Content for report '.$key,
+            $reportMediator->getReport()
+        );
     }
 }

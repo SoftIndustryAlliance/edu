@@ -68,3 +68,4 @@ PHP self-educational project for data structures and algorithms.
 - [Chain of responsibility](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern)
 - [Command](https://en.wikipedia.org/wiki/Command_pattern)
 - [Iterator](https://en.wikipedia.org/wiki/Iterator_pattern)
+- [Mediator](https://en.wikipedia.org/wiki/Mediator_pattern)
