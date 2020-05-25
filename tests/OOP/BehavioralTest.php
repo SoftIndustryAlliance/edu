@@ -9,6 +9,7 @@ use OOP\Behavioral\Iterator;
 use OOP\Behavioral\Mediator;
 use OOP\Behavioral\Memento;
 use OOP\Behavioral\Observer;
+use OOP\Behavioral\State;
 use Faker;
 
 final class BehavioralTest extends TestCase
@@ -129,6 +130,22 @@ final class BehavioralTest extends TestCase
         $this->assertStringContainsString(
             'Content for report key '.$key,
             $content->getContent()
+        );
+    }
+
+    public function testState()
+    {
+        $key = $this->faker->randomNumber(3);
+        $report = new State\Report(new State\InitialState());
+        $this->assertFalse($report->generateReport());
+        $this->assertEmpty($report->getContent());
+
+        $report->setKey($key);
+        $this->assertTrue($report->generateReport());
+
+        $this->assertStringContainsString(
+            'Content for key '.$key,
+            $report->getContent()
         );
     }
 }
