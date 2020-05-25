@@ -8,6 +8,7 @@ use OOP\Behavioral\Command;
 use OOP\Behavioral\Iterator;
 use OOP\Behavioral\Mediator;
 use OOP\Behavioral\Memento;
+use OOP\Behavioral\Observer;
 use Faker;
 
 final class BehavioralTest extends TestCase
@@ -107,6 +108,27 @@ final class BehavioralTest extends TestCase
         $this->assertStringContainsString(
             'Content for key '.$key,
             $report->getReport()
+        );
+    }
+
+    public function testObserver()
+    {
+        $key = $this->faker->randomNumber(3);
+        $report = new Observer\Report();
+
+        $header = new Observer\Header();
+        $content = new Observer\Content();
+        $footer = new Observer\Footer();
+
+        $report->attach($header);
+        $report->attach($content);
+        $report->attach($footer);
+
+        $report->setKey($key);
+
+        $this->assertStringContainsString(
+            'Content for report key '.$key,
+            $content->getContent()
         );
     }
 }

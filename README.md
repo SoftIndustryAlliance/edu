@@ -70,3 +70,4 @@ PHP self-educational project for data structures and algorithms.
 - [Iterator](https://en.wikipedia.org/wiki/Iterator_pattern)
 - [Mediator](https://en.wikipedia.org/wiki/Mediator_pattern)
 - [Memento](https://en.wikipedia.org/wiki/Memento_pattern)
+- [Observer](https://en.wikipedia.org/wiki/Observer_pattern)
