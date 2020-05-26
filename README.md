@@ -72,3 +72,4 @@ PHP self-educational project for data structures and algorithms.
 - [Memento](https://en.wikipedia.org/wiki/Memento_pattern)
 - [Observer](https://en.wikipedia.org/wiki/Observer_pattern)
 - [State](https://en.wikipedia.org/wiki/State_pattern)
+- [Strategy](https://en.wikipedia.org/wiki/Strategy_pattern)

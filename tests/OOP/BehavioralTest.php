@@ -10,6 +10,7 @@ use OOP\Behavioral\Mediator;
 use OOP\Behavioral\Memento;
 use OOP\Behavioral\Observer;
 use OOP\Behavioral\State;
+use OOP\Behavioral\Strategy;
 use Faker;
 
 final class BehavioralTest extends TestCase
@@ -146,6 +147,24 @@ final class BehavioralTest extends TestCase
         $this->assertStringContainsString(
             'Content for key '.$key,
             $report->getContent()
+        );
+    }
+
+    public function testStrategy()
+    {
+        $key = $this->faker->randomNumber(3);
+        $report = new Strategy\Report(new Strategy\SimpleReport());
+
+        $this->assertStringContainsString(
+            'Simple report content for key '.$key,
+            $report->getContent($key)
+        );
+
+        $report->setStrategy(new Strategy\FullReport());
+
+        $this->assertStringContainsString(
+            'Full report content for key '.$key,
+            $report->getContent($key)
         );
     }
 }
