@@ -11,6 +11,7 @@ use OOP\Behavioral\Memento;
 use OOP\Behavioral\Observer;
 use OOP\Behavioral\State;
 use OOP\Behavioral\Strategy;
+use OOP\Behavioral\TemplateMethod;
 use Faker;
 
 final class BehavioralTest extends TestCase
@@ -165,6 +166,26 @@ final class BehavioralTest extends TestCase
         $this->assertStringContainsString(
             'Full report content for key '.$key,
             $report->getContent($key)
+        );
+    }
+
+    public function testTemplateMethod()
+    {
+        $key = $this->faker->randomNumber(3);
+        $report = new TemplateMethod\SimpleReport($key);
+        $report->generate();
+
+        $this->assertStringContainsString(
+            'Simple report content for key '.$key,
+            $report->getReport()
+        );
+
+        $report = new TemplateMethod\FullReport($key);
+        $report->generate();
+
+        $this->assertStringContainsString(
+            'Full report content for key '.$key,
+            $report->getReport()
         );
     }
 }

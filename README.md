@@ -73,3 +73,4 @@ PHP self-educational project for data structures and algorithms.
 - [Observer](https://en.wikipedia.org/wiki/Observer_pattern)
 - [State](https://en.wikipedia.org/wiki/State_pattern)
 - [Strategy](https://en.wikipedia.org/wiki/Strategy_pattern)
+- [Template method](https://en.wikipedia.org/wiki/Template_method_pattern)
