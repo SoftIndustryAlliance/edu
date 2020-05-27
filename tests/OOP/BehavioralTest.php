@@ -12,6 +12,7 @@ use OOP\Behavioral\Observer;
 use OOP\Behavioral\State;
 use OOP\Behavioral\Strategy;
 use OOP\Behavioral\TemplateMethod;
+use OOP\Behavioral\Visitor;
 use Faker;
 
 final class BehavioralTest extends TestCase
@@ -186,6 +187,29 @@ final class BehavioralTest extends TestCase
         $this->assertStringContainsString(
             'Full report content for key '.$key,
             $report->getReport()
+        );
+    }
+
+    public function testVisitor()
+    {
+        $key = $this->faker->randomNumber(3);
+        $header = new Visitor\Header();
+        $content = new Visitor\Content();
+        $report = new Visitor\Report($key, $header, $content);
+
+        $htmlVisitor = new Visitor\HTMLVisitor();
+        $pdfVisitor = new Visitor\PDFVisitor();
+
+        $report->accept($htmlVisitor);
+        $this->assertStringContainsString(
+            'HTML main content for key '.$key,
+            $report->getContent()
+        );
+
+        $report->accept($pdfVisitor);
+        $this->assertStringContainsString(
+            'PDF main content for key '.$key,
+            $report->getContent()
         );
     }
 }
